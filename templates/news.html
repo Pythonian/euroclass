@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}School News{% endblock %}
+
+{% block content %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area bg-20">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>School News</h2>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">School News</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start Blog Area -->
+<section class="blog-area pt-100 pb-70">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            {% for obj in news %}
+            <div class="col-lg-4 col-md-6">
+                <div class="single-blog">
+                    <a href="{% url 'news_detail' obj.slug %}" class="blog-img">
+						<img src="{% if obj.image %}{{ obj.image.url }}{% else %}https://via.placeholder.com/860x500{% endif %}" alt="{{ obj.title }}">
+						<span>{{ obj.category }}</span>
+					</a>
+                    <div class="blog-content">
+                        <ul>
+                            <li>
+                                <i class="ri-calendar-line"></i>
+                                <span>{{ obj.created|date:"F j, Y" }}</span>
+                            </li>
+                        </ul>
+
+                        <h3>
+                            <a href="{% url 'news_detail' obj.slug %}">{{ obj.title }}</a>
+                        </h3>
+
+                        <p>{{ obj.body|truncatechars:160 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->
+{% endblock %}

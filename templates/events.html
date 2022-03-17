@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}School Events{% endblock %}
+
+{% block content %}
+
+<!-- Start Page Title Area -->
+<div class="page-title-area bg-5">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Events</h2>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">Upcoming Events</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start Events Area -->
+<section class="events-area events-area-style-two ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="events-timer mr-15">
+                    <div class="event-img">
+                        <img src="https://via.placeholder.com/700x550.jpg" alt="Image">
+                    </div>
+
+                    <span>Next Event</span>
+
+                    <div id="timer">
+                        <div id="days"></div>
+                        <div id="hours"></div>
+                        <div id="minutes"></div>
+                        <div id="seconds"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="events-content ml-15">
+                    <span>Events</span>
+                    <h2>Upcoming events</h2>
+
+                    <ul class="events-list">
+                        {% for event in events %}
+                        <li>
+                            <div class="events-date">
+                                <span class="mb-2">{{ event.date|date:"j F" }}</span>
+                                <span>{{ event.date|date:"Y" }}</span>
+                            </div>
+
+                            <span>{{ event.category }}</span>
+                            <h3>
+                                <a href="{% url 'event_detail' event.slug %}">{{ event.title }}</a>
+                            </h3>
+                            <p>{{ event.description|truncatechars:150 }}</p>
+
+                            <a href="{% url 'event_detail' event.slug %}" class="read-more">
+                                Find out more
+                                <i class="ri-arrow-right-line"></i>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Events Area -->
+
+{% endblock %}
