@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -19,7 +20,7 @@ class News(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=150)
     image = models.ImageField(upload_to='news')
-    body = models.TextField()
+    body = RichTextField()
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

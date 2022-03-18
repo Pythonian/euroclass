@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Subject
+
 
 def home(request):
     return render(request, 'home.html', {})
@@ -14,7 +16,8 @@ def contact(request):
 
 
 def curriculum(request):
-    return render(request, 'curriculum.html', {})
+    subjects = Subject.objects.all()
+    return render(request, 'curriculum.html', {'subjects': subjects})
 
 
 def faq(request):

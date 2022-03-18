@@ -1,3 +1,33 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import (
+    Subject, FrequentlyAskedQuestionDescription, FrequentlyAskedQuestion,
+    Application, Gallery, PTAManagement, PTAMeetingResolution,
+    SchoolContactInfo, SchoolManagement, Tuition, About, Legal)
+
+
+@admin.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    pass
+
+
+class FrequentlyAskedQuestionDescriptionInline(admin.StackedInline):
+    model = FrequentlyAskedQuestionDescription
+    extra = 1
+
+
+@admin.register(FrequentlyAskedQuestion)
+class FrequentlyAskedQuestionAdmin(admin.ModelAdmin):
+    inlines = [FrequentlyAskedQuestionDescriptionInline]
+    list_display = ['title']
+
+
+admin.site.register(Application)
+admin.site.register(Gallery)
+admin.site.register(PTAManagement)
+admin.site.register(PTAMeetingResolution)
+admin.site.register(SchoolContactInfo)
+admin.site.register(SchoolManagement)
+admin.site.register(Tuition)
+admin.site.register(About)
+admin.site.register(Legal)
