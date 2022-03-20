@@ -146,3 +146,55 @@ CKEDITOR_IMAGE_BACKEND = 'pillow'
 CKEDITOR_BROWSE_SHOW_DIRS = True
 
 CKEDITOR_RESTRICT_BY_DATE = True
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    }
+}
+
+JAZZMIN_SETTINGS = {
+    # title of the window
+    "site_title": "Euroclass Visionary Admin",
+
+    # Title on the login screen
+    "site_header": "Euroclass Visionary",
+
+    # Title on the brand
+    "site_brand": "Euroclass Visionary",
+
+    # Welcome text on the login screen
+    "welcome_sign": "Welcome to the Admin Interface",
+
+    # Copyright on the footer
+    "copyright": "Euroclass Visionary Academy",
+
+
+    #############
+    # Side Menu #
+    #############
+
+    # Whether to display the side menu
+    "show_sidebar": True,
+
+    # Whether to aut expand the menu
+    "navigation_expanded": True,
+
+    #################
+    # Related Modal #
+    #################
+    # Use modals instead of popups
+    "related_modal_active": False,
+
+    #############
+    # UI Tweaks #
+    #############
+    # Whether to show the UI customizer on the sidebar
+    "show_ui_builder": False,
+}
