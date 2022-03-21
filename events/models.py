@@ -13,7 +13,7 @@ class Event(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['date']
         get_latest_by = 'date'
 
     def __str__(self):

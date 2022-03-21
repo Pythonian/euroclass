@@ -25,13 +25,17 @@ SECRET_KEY = 'django-insecure-x!!3+hrgk=3i_qb%lk_^e*m26s-k3=0(-u#wy36mn@(3m0lhun
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'www.euroclassvisionaryacademy.com',
+    'euroclassvisionaryacademy.com'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    # 'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.euroclass',
             ],
         },
     },

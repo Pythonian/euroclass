@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    Subject, FrequentlyAskedQuestionDescription, FrequentlyAskedQuestion,
+    Subject, FrequentlyAskedQuestion,
     Application, Gallery, PTAManagement, PTAMeetingResolution,
     SchoolContactInfo, SchoolManagement, Tuition, About, Legal)
 
@@ -11,15 +11,9 @@ class SubjectAdmin(admin.ModelAdmin):
     pass
 
 
-class FrequentlyAskedQuestionDescriptionInline(admin.StackedInline):
-    model = FrequentlyAskedQuestionDescription
-    extra = 1
-
-
 @admin.register(FrequentlyAskedQuestion)
 class FrequentlyAskedQuestionAdmin(admin.ModelAdmin):
-    inlines = [FrequentlyAskedQuestionDescriptionInline]
-    list_display = ['title']
+    list_display = ['question']
 
 
 admin.site.register(Application)

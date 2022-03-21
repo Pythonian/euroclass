@@ -21,10 +21,11 @@
 <section class="events-area events-area-style-two ptb-100">
     <div class="container">
         <div class="row">
+            {% if next_event %}
             <div class="col-lg-5">
                 <div class="events-timer mr-15">
                     <div class="event-img">
-                        <img src="https://via.placeholder.com/700x550.jpg" alt="Image">
+                        <img src="{% if next_event.image %}{{ next_event.image.url }}{% else %}https://via.placeholder.com/700x550.jpg{% endif %}" alt="Image">
                     </div>
 
                     <span>Next Event</span>
@@ -37,7 +38,9 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
 
+            {% if events %}
             <div class="col-lg-7">
                 <div class="events-content ml-15">
                     <span>Events</span>
@@ -66,6 +69,9 @@
                     </ul>
                 </div>
             </div>
+            {% else %}
+            <p>There are currently no upcoming Events at school</p>
+            {% endif %}
         </div>
     </div>
 </section>

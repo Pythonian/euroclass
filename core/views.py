@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Subject
+from .models import Subject, SchoolManagement, FrequentlyAskedQuestion
 
 
 def home(request):
@@ -21,7 +21,8 @@ def curriculum(request):
 
 
 def faq(request):
-    return render(request, 'faq.html', {})
+    faqs = FrequentlyAskedQuestion.objects.all()
+    return render(request, 'faq.html', {'faqs': faqs})
 
 
 def gallery(request):
@@ -33,7 +34,9 @@ def history(request):
 
 
 def leadership_team(request):
-    return render(request, 'leadership_team.html', {})
+    teams = SchoolManagement.objects.all()
+    return render(
+        request, 'leadership_team.html', {'teams': teams})
 
 
 def mission_vision(request):

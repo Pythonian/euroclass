@@ -24,7 +24,7 @@
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
-                                <a href="{% url 'home' %}" class="nav-link active">Home</a>
+                                <a href="{% url 'home' %}" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
@@ -32,10 +32,10 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="history.html" class="nav-link">History of the school</a>
+                                        <a href="{% url 'history' %}" class="nav-link">History of the school</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="mission_vision.html" class="nav-link">Mission &amp; Vision</a>
+                                        <a href="{% url 'mission_vision' %}" class="nav-link">Mission &amp; Vision</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link">
@@ -45,7 +45,7 @@
 
                                         <ul class="dropdown-menu">
                                             <li class="nav-item">
-                                                <a href="leadership_team.html" class="nav-link">Leadership Team</a>
+                                                <a href="{% url 'leadership_team' %}" class="nav-link">Leadership Team</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="teachers.html" class="nav-link">Teachers</a>
