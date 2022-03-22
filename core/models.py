@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -124,6 +125,7 @@ class Tuition(models.Model):
 
 
 class SchoolContactInfo(models.Model):
+    # Add unique=True?
     short_information = models.CharField(max_length=150)
     address = models.CharField(max_length=200)
     email = models.EmailField()
@@ -134,8 +136,18 @@ class SchoolContactInfo(models.Model):
     twitter_url = models.URLField(blank=True)
     linkedin_url = models.URLField(blank=True)
 
+    class Meta:
+        verbose_name = 'School Contact Information'
+        verbose_name_plural = 'School Contact Information'
+
     def __str__(self):
         return "School Contact Information"
+
+    def save(self, *args, **kwargs):
+        if not self.pk and SchoolContactInfo.objects.exists():
+            raise ValidationError(
+                'There can only be one SchoolContactInfo instance.')
+        return super().save(*args, **kwargs)
 
 
 class About(models.Model):
@@ -149,14 +161,3 @@ class About(models.Model):
 
     def __str__(self):
         return "About School"
-
-
-class Legal(models.Model):
-    terms = RichTextField()
-    privacy_policy = RichTextField()
-
-    class Meta:
-        verbose_name_plural = 'Legal'
-
-    def __str__(self):
-        return "Legal Information"

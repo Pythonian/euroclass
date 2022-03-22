@@ -11,8 +11,7 @@ urlpatterns = [
     path('history/', views.history, name='history'),
     path('leadership_team/', views.leadership_team, name='leadership_team'),
     path('mission_vision/', views.mission_vision, name='mission_vision'),
-    path('privacy/', views.privacy, name='privacy'),
     path('pta_management/', views.pta_management, name='pta_management'),
-    path('terms/', views.terms, name='terms'),
+    path('admission/', views.admission, name='admission'),
     path('', views.home, name='home'),
 ]

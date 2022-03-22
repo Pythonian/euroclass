@@ -43,13 +43,9 @@ def mission_vision(request):
     return render(request, 'mission_vision.html', {})
 
 
-def privacy(request):
-    return render(request, 'privacy.html', {})
-
-
 def pta_management(request):
     return render(request, 'pta_management.html', {})
 
 
-def terms(request):
-    return render(request, 'terms.html', {})
+def admission(request):
+    return render(request, 'admission.html', {})

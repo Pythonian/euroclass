@@ -1,29 +1,29 @@
 {% extends "base.html" %}
-{% block title %}Terms &amp; Conditions{% endblock %}
+{% block title %}{{ flatpage.title }}{% endblock %}
 
 {% block content %}
 <!-- Start Page Title Area -->
 <div class="page-title-area bg-7">
     <div class="container">
         <div class="page-title-content">
-            <h2>Terms &amp; Conditions</h2>
+            <h2>{{ flatpage.title }}</h2>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li class="active">Terms &amp; Conditions</li>
+                <li class="active">{{ flatpage.title }}</li>
             </ul>
         </div>
     </div>
 </div>
 <!-- End Page Title Area -->
 
-<!-- End Terms & Conditions Area -->
-<section class="terms-conditions-area ptb-100">
+<!-- End Privacy Policy Area -->
+<section class="privacy-policy-area ptb-100">
     <div class="container">
         <div class="main-default-content">
-            {{ legal.terms|safe }}
+            {{ flatpage.content }}
         </div>
     </div>
 </section>
-<!-- End Terms & Conditions Area -->
+<!-- End Privacy Policy Area -->
 
 {% endblock %}
