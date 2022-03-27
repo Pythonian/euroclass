@@ -3,22 +3,18 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.db import models
 
+from ckeditor.widgets import CKEditorWidget
+
 from .models import (
     Subject, FrequentlyAskedQuestion,
-    Application, Gallery, PTAManagement, PTAMeetingResolution,
+    Application, Picture, PTAManagement, PTAMeetingResolution,
     SchoolContactInfo, SchoolManagement, Tuition, About)
-
-from ckeditor.widgets import CKEditorWidget
 
 
 class FlatPageCustom(FlatPageAdmin):
     formfield_overrides = {
         models.TextField: {'widget': CKEditorWidget}
     }
-
-
-admin.site.unregister(FlatPage)
-admin.site.register(FlatPage, FlatPageCustom)
 
 
 @admin.register(Subject)
@@ -31,11 +27,25 @@ class FrequentlyAskedQuestionAdmin(admin.ModelAdmin):
     list_display = ['question']
 
 
+@admin.register(PTAManagement)
+class PTAManagementAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'role']
+
+
+@admin.register(SchoolManagement)
+class SchoolManagementAdmin(admin.ModelAdmin):
+    list_display = ['full_name', 'role', 'title']
+
+
+@admin.register(PTAMeetingResolution)
+class PTAMeetingResolutionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+
 admin.site.register(Application)
-admin.site.register(Gallery)
-admin.site.register(PTAManagement)
-admin.site.register(PTAMeetingResolution)
+admin.site.register(Picture)
 admin.site.register(SchoolContactInfo)
-admin.site.register(SchoolManagement)
 admin.site.register(Tuition)
 admin.site.register(About)
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, FlatPageCustom)

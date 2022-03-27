@@ -2,18 +2,18 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+# class Category(models.Model):
+#     name = models.CharField(max_length=50)
+#     slug = models.SlugField(max_length=50)
+#     created = models.DateTimeField(auto_now_add=True)
+#     updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        verbose_name_plural = 'Categories'
-        ordering = ['-created']
+#     class Meta:
+#         verbose_name_plural = 'Categories'
+#         ordering = ['-created']
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 class News(models.Model):
@@ -21,7 +21,7 @@ class News(models.Model):
     slug = models.SlugField(max_length=150)
     image = models.ImageField(upload_to='news')
     body = RichTextField()
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    # category = models.ForeignKey(Category, on_delete=models.PROTECT)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

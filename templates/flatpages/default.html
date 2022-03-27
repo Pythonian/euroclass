@@ -2,8 +2,8 @@
 {% block title %}{{ flatpage.title }}{% endblock %}
 
 {% block content %}
-<!-- Start Page Title Area -->
-<div class="page-title-area bg-7">
+
+<div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
             <h2>{{ flatpage.title }}</h2>
@@ -14,16 +14,13 @@
         </div>
     </div>
 </div>
-<!-- End Page Title Area -->
 
-<!-- End Terms & Conditions Area -->
-<section class="terms-conditions-area ptb-100">
+<section class="ptb-100">
     <div class="container">
         <div class="main-default-content">
-            {{ flatpage.content }}
+            {{ flatpage.content|safe }}
         </div>
     </div>
 </section>
-<!-- End Terms & Conditions Area -->
 
 {% endblock %}

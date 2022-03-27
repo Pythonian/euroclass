@@ -26,7 +26,7 @@
                 <div class="single-blog">
                     <a href="{% url 'news_detail' obj.slug %}" class="blog-img">
 						<img src="{% if obj.image %}{{ obj.image.url }}{% else %}https://via.placeholder.com/860x500{% endif %}" alt="{{ obj.title }}">
-						<span>{{ obj.category }}</span>
+						<!-- <span>{{ obj.category }}</span> -->
 					</a>
                     <div class="blog-content">
                         <ul>
@@ -40,7 +40,7 @@
                             <a href="{% url 'news_detail' obj.slug %}">{{ obj.title }}</a>
                         </h3>
 
-                        <p>{{ obj.body|truncatechars:160 }}</p>
+                        <p>{{ obj.body|safe|truncatechars:160 }}</p>
                     </div>
                 </div>
             </div>

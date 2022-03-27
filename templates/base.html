@@ -54,29 +54,29 @@
                                 <img src="https://via.placeholder.com/157x48" alt="Image">
                             </a>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptas animi, minima velit corrupti fugit! Tenetur animi suscipit, reiciendis ad consectetur fugit</p>
+                        <p>{{ info.short_information }}</p>
 
                         <ul class="social-icon">
                             <li>
                                 <span>Follow us:</span>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="{{ info.facebook_url }}" target="_blank">
                                         <i class="ri-facebook-fill"></i>
                                     </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="{{ info.instagram_url }}" target="_blank">
                                         <i class="ri-instagram-line"></i>
                                     </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="{{ info.linkedin_url }}" target="_blank">
                                         <i class="ri-linkedin-fill"></i>
                                     </a>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="{{ info.twitter_url }}" target="_blank">
                                         <i class="ri-twitter-fill"></i>
                                     </a>
                             </li>
@@ -90,10 +90,10 @@
 
                         <ul class="import-link">
                             <li>
-                                <a href="{% url 'history' %}">History of the School</a>
+                                <a href="{% url 'contact' %}">Contact Us</a>
                             </li>
                             <li>
-                                <a href="{% url 'leadership_team' %}">School Management</a>
+                                <a href="{% url 'history' %}">History of the School</a>
                             </li>
                             <li>
                                 <a href="{% url 'faq' %}">Frequently Asked Questions</a>
@@ -123,10 +123,10 @@
                                 <a href="{% url 'curriculum' %}">School Curriculum</a>
                             </li>
                             <li>
-                                <a href="nursery.html">Nursery School</a>
+                                <a href="/nursery/">Nursery School</a>
                             </li>
                             <li>
-                                <a href="primary.html">Primary School</a>
+                                <a href="/primary/">Primary School</a>
                             </li>
                         </ul>
                     </div>
@@ -139,17 +139,17 @@
                         <ul class="address">
                             <li class="location">
                                 <i class="ri-map-pin-line"></i>
-                                <span>Address</span> 1234 University Street, Lagos.
+                                <span>Address</span> {{ info.address }}
                             </li>
                             <li>
                                 <i class="ri-mail-line"></i>
                                 <span>Email</span>
-                                <a href="#">prontomaster@gmail.com</a>
+                                <a href="mailto:{{ info.email }}">{{ info.email }}</a>
                             </li>
                             <li>
                                 <i class="ri-phone-line"></i>
                                 <span>Phone</span>
-                                <a href="tel:+234-7062299016">+234-7062299016</a>
+                                <a href="tel:{{ info.phone_number }}">{{ info.phone_number }}</a>
                             </li>
                         </ul>
                     </div>

@@ -6,6 +6,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class Subject(models.Model):
     name = models.CharField(max_length=50)
+    # teachers - ManyToMany
+    # students - ManyToMany
     description = models.TextField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -49,11 +51,24 @@ class Application(models.Model):
 
 
 class SchoolManagement(models.Model):
+    ROLE_CHOICES = (
+        ('L', 'Leadership Team'),
+        ('T', 'Teachers'),
+        ('A', 'Teaching Assistants'),
+        ('O', 'Office Staff'),
+        ('S', 'Support Staff'))
     full_name = models.CharField(max_length=100)
-    role = models.CharField(max_length=50)
+    role = models.CharField(max_length=1, choices=ROLE_CHOICES)
+    title = models.CharField(
+        max_length=25, blank=True,
+        help_text='E.g: Principal, Senior Teacher')
     image = models.ImageField(upload_to='management')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'School Management'
+        verbose_name = 'School Management'
 
     def __str__(self):
         return self.full_name
@@ -66,6 +81,10 @@ class PTAManagement(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'PTA Management'
+        verbose_name_plural = 'PTA Management'
+
     def __str__(self):
         return self.full_name
 
@@ -77,6 +96,10 @@ class PTAMeetingResolution(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'PTA Meeting Resolution'
+        verbose_name_plural = 'PTA Meeting Resolutions'
+
     def __str__(self):
         return self.title
 
@@ -87,13 +110,17 @@ class FrequentlyAskedQuestion(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'Frequently Asked Question'
+        verbose_name_plural = 'Frequently Asked Questions'
+
     def __str__(self):
         return self.question
 
 
-class Gallery(models.Model):
+class Picture(models.Model):
     caption = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='gallery')
+    image = models.ImageField(upload_to='picture')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -118,6 +145,9 @@ class Tuition(models.Model):
     third_term_period = models.CharField(
         max_length=100, help_text='Eg. September-November')
     third_term_price = models.IntegerField()
+
+    def __str__(self):
+        return self.tuition_info
 
     @property
     def term_total(self):
@@ -151,10 +181,12 @@ class SchoolContactInfo(models.Model):
 
 
 class About(models.Model):
+    welcome_note = models.TextField()
+    welcome_note_image = models.ImageField(upload_to='about')
     history = RichTextUploadingField()
-    mission = RichTextField()
-    vision = RichTextField()
+    history_image = models.ImageField(upload_to='about')
     admission_information = RichTextField()
+    admission_information_image = models.ImageField(upload_to='about')
 
     class Meta:
         verbose_name_plural = 'About'

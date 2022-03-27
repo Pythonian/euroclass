@@ -11,9 +11,9 @@
                     <div class="col-lg-6">
                         <div class="banner-content">
                             <span>Welcome Note</span>
-                            <h1>Welcome to Euroclass Vision School. A world-class education starts from the foundation lorem ipsum consecteur egestas non nisi.</h1>
+                            <h1>{{ about.welcome_note }}</h1>
                             <div class="banner-btn pb-2">
-                                <a href="application.html" class="default-btn">
+                                <a href="{# url 'application' #}" class="default-btn">
                                     Apply for Admission
                                     <i class="ri-arrow-right-line"></i>
                                 </a>
@@ -23,7 +23,7 @@
 
                     <div class="col-lg-6">
                         <div class="banner-img">
-                            <img src="https://via.placeholder.com/825x830" alt="Image">
+                            <img src="{{ about.welcome_note_image.url }}" width="825" height="830" alt="Image">
                         </div>
                     </div>
                 </div>
@@ -39,19 +39,16 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="about-img mr-15">
-                    <img src="https://via.placeholder.com/700x500" alt="Image">
+                    <img src="{{ about.history_image.url }}" width="825" height="830" alt="Image">
                 </div>
             </div>
 
             <div class="col-lg-6">
                 <div class="about-content ml-15">
                     <span>About our School</span>
-                    <h2>Our education system inspires the next generation</h2>
+                    <p>{{ about.history|safe|truncatechars:420 }}</p>
 
-                    <p>Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.</p>
-
-                    <a href="history.html" class="default-btn">
+                    <a href="{% url 'history' %}" class="default-btn">
 						Read more
 						<i class="ri-arrow-right-line"></i>
 					</a>
@@ -72,55 +69,34 @@
                     <h2>Upcoming events</h2>
 
                     <ul class="events-list">
+                        {% for event in events %}
                         <li>
                             <div class="events-date">
-                                <span class="mb-2">01 May</span>
-                                <span>2031</span>
+                                <span class="mb-2">{{ event.date|date:"j F" }}</span>
+                                <span>{{ event.date|date:"Y" }}</span>
                             </div>
-                            <span>Sports</span>
-                            <h3>Interhouse Sports</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="event_detail.html" class="read-more">
-								Find out more
-								<i class="ri-arrow-right-line"></i>
-							</a>
-                        </li>
 
-                        <li>
-                            <div class="events-date">
-                                <span class="mb-2">02 May</span>
-                                <span>2031</span>
-                            </div>
-                            <span>Social</span>
-                            <h3>Cultural Day and Education Fair</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="event_detail.html" class="read-more">
-								Find out more
-								<i class="ri-arrow-right-line"></i>
-							</a>
-                        </li>
+                            <span>{{ event.category }}</span>
+                            <h3>
+                                <a href="{% url 'event_detail' event.slug %}">{{ event.title }}</a>
+                            </h3>
+                            <p>{{ event.description|truncatechars:150 }}</p>
 
-                        <li>
-                            <div class="events-date">
-                                <span class="mb-2">02 May</span>
-                                <span>2031</span>
-                            </div>
-                            <span>Party</span>
-                            <h3>End of Year Christmas Party</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="event_detail.html" class="read-more">
+                            <a href="{% url 'event_detail' event.slug %}" class="read-more">
                                 Find out more
                                 <i class="ri-arrow-right-line"></i>
                             </a>
                         </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
 
+            {% if next_event %}
             <div class="col-lg-5">
-                <div class="events-timer ml-15">
+                <div class="events-timer mr-15">
                     <div class="event-img">
-                        <img src="https://via.placeholder.com/700x550" alt="Image">
+                        <img src="{% if next_event.image %}{{ next_event.image.url }}{% else %}https://via.placeholder.com/700x550.jpg{% endif %}" alt="Image">
                     </div>
 
                     <span>Next Event</span>
@@ -133,6 +109,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -144,7 +121,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="admission-img mr-15">
-                    <img src="https://via.placeholder.com/700x500" alt="Image">
+                    <img src="{{ about.admission_information_image.url }}" alt="Image">
                 </div>
             </div>
 
@@ -152,10 +129,9 @@
                 <div class="admission-content ml-15">
                     <span>Admission information</span>
                     <h2>All types of admission information into the school can be found here</h2>
-                    <p>Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.</p>
+                    <p>{{ about.admission_information|safe|truncatechars:420 }}</p>
 
-                    <a href="admission.html" class="default-btn">
+                    <a href="{% url 'admission' %}" class="default-btn">
 						Read more
 						<i class="ri-arrow-right-line"></i>
 					</a>
@@ -173,53 +149,33 @@
             <div class="col-lg-4 col-md-6">
                 <div class="costing-content">
                     <h2>Tuition costs</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                    <p>Our rates are affordable to ensure that nobody is left out in their quest for academic excellence.</p>
                 </div>
             </div>
 
+            {% for tuition in tuitions %}
             <div class="col-lg-4 col-md-6">
                 <div class="single-costing-card">
-                    <h3>Nursery School</h3>
+                    <h3>{{ tuition.tuition_info }}</h3>
                     <span class="subtitle">3-month Terms</span>
 
-                    <p>First Term <span>(January - March)</span> <span class="price"> <br> #25,000</span> </p>
+                    <p>First Term <span>({{ tuition.first_term_period }})</span> <span class="price"> <br> &#8358;{{ tuition.first_term_price }}</span> </p>
 
-                    <p>Second Term <span> (May-July)</span> <span class="price"> <br> #25,000</span> </p>
+                    <p>Second Term <span> ({{ tuition.second_term_period }})</span> <span class="price"> <br> &#8358;{{ tuition.second_term_price }}</span> </p>
 
-                    <p>Third Term <span>(September - November)</span> <span class="price"> <br> #20,000</span> </p>
+                    <p>Third Term <span>({{ tuition.third_term_period }})</span> <span class="price"> <br> &#8358;{{ tuition.third_term_price }}</span> </p>
 
                     <ul>
                         <li>
                             Total
                         </li>
                         <li class="price">
-                            #70,000
+                            &#8358;{{ tuition.term_total }}
                         </li>
                     </ul>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="single-costing-card">
-                    <h3>Primary School</h3>
-                    <span class="subtitle">3-month Terms</span>
-
-                    <p>First Term <span>(January - March)</span> <span class="price"> <br> #35,000</span> </p>
-
-                    <p>Second Term <span> (May-July)</span> <span class="price"> <br> #35,000</span> </p>
-
-                    <p>Third Term <span>(September - November)</span> <span class="price"> <br> #30,000</span> </p>
-
-                    <ul>
-                        <li>
-                            Total
-                        </li>
-                        <li class="price">
-                            #100,000
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -230,79 +186,34 @@
     <div class="container">
         <div class="section-title">
             <h2>School news</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt laboredolore magna suspendisse ultrices gravida.</p>
+            <p>Latest updates about activities from the Nursery and Primary School.</p>
         </div>
 
         <div class="row justify-content-md-center">
+            {% for obj in news %}
             <div class="col-lg-4 col-md-6">
                 <div class="single-blog">
-                    <a href="news_detail.html" class="blog-img">
-						<img src="https://via.placeholder.com/860x500" alt="Image">
-						<span>Academics</span>
-					</a>
-
-                    <div class="blog-content">
-                        <ul>
-                            <li>
-                                <i class="ri-calendar-line"></i>
-                                <span>26 March, 2021</span>
-                            </li>
-                        </ul>
-
-                        <h3>
-                            <a href="news_detail.html">Updates on Cultural day</a>
-                        </h3>
-
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam animi dicta ex labore. Ipsum nobis amet nisi voluptate corporis consectetur adipisicing elit alias</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog">
-                    <a href="news_detail.html" class="blog-img">
-                        <img src="https://via.placeholder.com/860x500" alt="Image">
-                        <span>Academics</span>
+                    <a href="{% url 'news_detail' obj.slug %}" class="blog-img">
+                        <img src="{% if obj.image %}{{ obj.image.url }}{% else %}https://via.placeholder.com/860x500{% endif %}" alt="{{ obj.title }}">
+                        <!-- <span>{{ obj.category }}</span> -->
                     </a>
-
                     <div class="blog-content">
                         <ul>
                             <li>
                                 <i class="ri-calendar-line"></i>
-                                <span>26 March, 2021</span>
+                                <span>{{ obj.created|date:"F j, Y" }}</span>
                             </li>
                         </ul>
 
                         <h3>
-                            <a href="news_detail.html">Updates on Cultural day</a>
+                            <a href="{% url 'news_detail' obj.slug %}">{{ obj.title }}</a>
                         </h3>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam animi dicta ex labore. Ipsum nobis amet nisi voluptate corporis consectetur adipisicing elit alias</p>
+                        <p>{{ obj.body|safe|truncatechars:160 }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog">
-                    <a href="news_detail.html" class="blog-img">
-                        <img src="https://via.placeholder.com/860x500" alt="Image">
-                        <span>Academics</span>
-                    </a>
-
-                    <div class="blog-content">
-                        <ul>
-                            <li>
-                                <i class="ri-calendar-line"></i>
-                                <span>26 March, 2021</span>
-                            </li>
-                        </ul>
-
-                        <h3>
-                            <a href="news_detail.html">Updates on Cultural day</a>
-                        </h3>
-
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam animi dicta ex labore. Ipsum nobis amet nisi voluptate corporis consectetur adipisicing elit alias</p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

@@ -10,8 +10,11 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('history/', views.history, name='history'),
     path('leadership_team/', views.leadership_team, name='leadership_team'),
-    path('mission_vision/', views.mission_vision, name='mission_vision'),
+    path('teachers/', views.teachers, name='teachers'),
     path('pta_management/', views.pta_management, name='pta_management'),
     path('admission/', views.admission, name='admission'),
+    path('resolutions/<slug:slug>/',
+         views.resolution_detail, name='resolution'),
+    path('resolutions/', views.resolutions, name='resolutions'),
     path('', views.home, name='home'),
 ]

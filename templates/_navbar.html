@@ -35,7 +35,7 @@
                                         <a href="{% url 'history' %}" class="nav-link">History of the school</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{% url 'mission_vision' %}" class="nav-link">Mission &amp; Vision</a>
+                                        <a href="/mission_vision/" class="nav-link">Mission &amp; Vision</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link">
@@ -48,16 +48,16 @@
                                                 <a href="{% url 'leadership_team' %}" class="nav-link">Leadership Team</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="teachers.html" class="nav-link">Teachers</a>
+                                                <a href="{% url 'teachers' %}" class="nav-link">Teachers</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="teaching_assistants.html" class="nav-link">Teaching assistants</a>
+                                                <a href="#" class="nav-link">Teaching assistants</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="office_staff.html" class="nav-link">Office staff</a>
+                                                <a href="#" class="nav-link">Office staff</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="support_staff.html" class="nav-link">Support staff</a>
+                                                <a href="#" class="nav-link">Support staff</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -78,13 +78,13 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="reception.html" class="nav-link">Reception</a>
+                                        <a href="/reception/" class="nav-link">Reception</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="nursery.html" class="nav-link">Nursery (Class 1-3)</a>
+                                        <a href="/nursery/" class="nav-link">Nursery (Class 1-3)</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="primary.html" class="nav-link">Primary (Class 1-6)</a>
+                                        <a href="/primary/" class="nav-link">Primary (Class 1-6)</a>
                                     </li>
                                 </ul>
                             </li>
@@ -94,22 +94,19 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="school_day.html" class="nav-link">Our School Day</a>
+                                        <a href="/school-day/" class="nav-link">Our School Day</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="gallery.html" class="nav-link">Gallery</a>
+                                        <a href="/school-uniform/" class="nav-link">School Uniform</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="school_uniform.htm" class="nav-link">School Uniform</a>
+                                        <a href="/school-meals/" class="nav-link">School meals</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="school_meals.html" class="nav-link">School meals</a>
+                                        <a href="/school-policies/" class="nav-link">School Policies</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="school_policies.html" class="nav-link">School Policies</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="school_performance.html" class="nav-link">School performance data</a>
+                                        <a href="/school-performance/" class="nav-link">School performance data</a>
                                     </li>
                                 </ul>
                             </li>
@@ -119,24 +116,22 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="pta_meetings.html" class="nav-link">PTA meeting resolutions</a>
+                                        <a href="{% url 'resolutions' %}" class="nav-link">PTA meeting resolutions</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="pta_management.html" class="nav-link">PTA management</a>
+                                        <a href="{% url 'pta_management' %}" class="nav-link">PTA management</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="contact.html" class="nav-link">Contact</a>
+                                <a href="{% url 'gallery' %}" class="nav-link">Gallery</a>
                             </li>
                         </ul>
 
                         <div class="others-options">
                             <ul>
                                 <li>
-                                    <a href="application.html" class="default-btn">
-										Application form
-									</a>
+                                    <a href="{# url 'application' #}" class="default-btn">Application form</a>
                                 </li>
                             </ul>
                         </div>
