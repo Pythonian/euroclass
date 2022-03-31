@@ -7,7 +7,7 @@
                 <div class="mobile-responsive-menu">
                     <div class="logo">
                         <a href="{% url 'home' %}">
-							<img src="https://via.placeholder.com/157x48.jpg?text=School+Logo" alt="logo">
+							<img src="{% if info.logo %}{{ info.logo.url }}{% else %}https://via.placeholder.com/157x48{% endif %}" alt="logo">
 						</a>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{% url 'home' %}">
-                            <img src="https://via.placeholder.com/157x48.jpg?text=School+Logo" alt="logo">
+                            <img src="{% if info.logo %}{{ info.logo.url }}{% else %}https://via.placeholder.com/157x48{% endif %}" alt="logo">
                         </a>
 
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -131,7 +131,7 @@
                         <div class="others-options">
                             <ul>
                                 <li>
-                                    <a href="{# url 'application' #}" class="default-btn">Application form</a>
+                                    <a href="{% url 'application' %}" class="default-btn">Application form</a>
                                 </li>
                             </ul>
                         </div>

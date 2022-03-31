@@ -49,3 +49,7 @@ admin.site.register(Tuition)
 admin.site.register(About)
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageCustom)
+
+admin.site.site_header = 'Euroclass Admin'
+admin.site.index_title = 'Content Admin'
+admin.site.site_title = 'Euroclass administration'

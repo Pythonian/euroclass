@@ -1,7 +1,9 @@
 import datetime
-from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.shortcuts import redirect, render, get_object_or_404
 from events.models import Event
 from news.models import News
+from .forms import ApplicationForm
 from .models import (
     Subject, SchoolManagement, FrequentlyAskedQuestion,
     PTAManagement, Picture, PTAMeetingResolution, Tuition, About)
@@ -25,7 +27,18 @@ def home(request):
 
 
 def application(request):
-    return render(request, 'application.html', {})
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Application successfully sent.")
+            return redirect(application)
+        else:
+            messages.warning(
+                request, "There was an error, check below and resend.")
+    else:
+        form = ApplicationForm()
+    return render(request, 'application.html', {'form': form})
 
 
 def contact(request):

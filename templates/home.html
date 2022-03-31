@@ -13,7 +13,7 @@
                             <span>Welcome Note</span>
                             <h1>{{ about.welcome_note }}</h1>
                             <div class="banner-btn pb-2">
-                                <a href="{# url 'application' #}" class="default-btn">
+                                <a href="{% url 'application' %}" class="default-btn">
                                     Apply for Admission
                                     <i class="ri-arrow-right-line"></i>
                                 </a>
@@ -60,6 +60,7 @@
 <!-- End About Area -->
 
 <!-- Start Events Area -->
+{% if events %}
 <section class="events-area bg-color ptb-100">
     <div class="container">
         <div class="row align-items-center">
@@ -113,6 +114,7 @@
         </div>
     </div>
 </section>
+{% endif %}
 <!-- End Events Area -->
 
 <!-- Stat Admission Area -->

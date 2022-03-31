@@ -1,114 +1,109 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Submit Application{% endblock %}
 
 {% block content %}
 
-<!-- Start Page Title Area -->
 <div class="page-title-area bg-27">
     <div class="container">
         <div class="page-title-content">
             <h2>Application</h2>
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="active">Submit Application</li>
             </ul>
         </div>
     </div>
 </div>
-<!-- End Page Title Area -->
 
-<!-- Start Candidates Resume Area -->
 <section class="candidates-resume-area ptb-100">
     <div class="container">
+        {% include '_alerts.html' %}
+        {% if form.errors %}
+          {% for field in form %}
+          {% if field.errors %}
+          <div class="alert alert-primary" role="alert">
+            {{ field.label }}: {{ field.errors|striptags }}
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
         <div class="candidates-resume-content">
-            <form class="resume-info">
-                <h3>Basic information</h3>
+            <form class="resume-info" method="post" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Pupil information</h3>
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label>Full Name</label>
-                            <input class="form-control" type="text" name="First-Name">
+                            <label for="id_full_name">Full name (required)</label>
+                            {{ form.full_name }}
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label>Class</label>
-                            <select class="form-control">
-									<option value="1">Nursery 1</option>
-									<option value="2">Nursery 2</option>
-                                    <option value="3">Nursery 3</option>
-                                    <option value="4">Primary 1</option>
-                                    <option value="5">Primary 2</option>
-                                    <option value="6">Primary 3</option>
-                                    <option value="7">Primary 4</option>
-                                    <option value="8">Primary 5</option>
-                                    <option value="9">Primary 6</option>
-								</select>
+                            <label for="id_pupil_class">Class (required)</label>
+                            {{ form.pupil_class }}
                             <i class="ri-arrow-down-s-line"></i>
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label for="img">Photo</label>
-                            <input type="file" class="form-control" id="img-1" name="img" accept="image/*">
+                            <label for="id_image">Photo (required)</label>
+                            {{ form.image }}
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label>Date Of Birth</label>
-                            <div class="input-group date" id="datetimepicker">
-                                <input type="text" class="form-control">
+                            <label for="id_date_of_birth">Date Of Birth (required)</label>
+                            <div class="input-group date">
+                                {{ form.date_of_birth }}
                                 <span class="input-group-addon"></span>
                                 <i class="bx bx-calendar"></i>
                             </div>
                         </div>
                     </div>
 
-                    <p>Photo Must be in Passport (PP) Size. Max Upload Size 256KB</p>
+                    <p>Photo Must be in Passport (PP) Size</p>
                 </div>
 
-                <h3>Student personal information</h3>
+                <h3>Parent's information</h3>
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label>Parent's name</label>
-                            <input type="text" class="form-control" name="Father">
+                            <label for="id_parent_name">Parent's name (required)</label>
+                            {{ form.parent_name }}
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label>Contact no</label>
-                            <input type="text" class="form-control" name="contact">
+                            <label for="id_contact_number">Contact no (required)</label>
+                            {{ form.contact_number }}
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label>E-mail</label>
-                            <input type="email" class="form-control" name="email">
+                            <label for="id_email">Contact E-mail</label>
+                            {{ form.email }}
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label>Home address</label>
-                            <input type="text" class="form-control" name="address">
+                            <label for="id_home_address">Home address (required)</label>
+                            {{ form.home_address }}
                         </div>
                     </div>
                     
                     <div class="col-lg-12">
-                        <a href="#" class="default-btn">
-                                Submit application
-                                <i class="ri-arrow-right-line"></i>
-                            </a>
+                        <input type="submit" class="default-btn" value="Submit application">
                     </div>
                 </div>
             </form>

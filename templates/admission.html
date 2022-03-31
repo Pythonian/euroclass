@@ -22,7 +22,7 @@
     <div class="container">
         <div class="main-default-content">
             <p class="mb-3">{{ about.admission_information|safe }}</p>
-            <a href="{# url 'application' #}" class="default-btn text-white">
+            <a href="{% url 'application' %}" class="default-btn text-white">
                 Apply for Admission
                 <i class="ri-arrow-right-line"></i>
             </a>

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'core',
     'events',
     'news',
+    'pupil',
 
     'ckeditor',
     'ckeditor_uploader',
