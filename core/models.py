@@ -184,6 +184,7 @@ class About(models.Model):
     welcome_note = models.TextField()
     welcome_note_image = models.ImageField(upload_to='about')
     history = RichTextUploadingField()
+    history_title = models.CharField(max_length=20)
     history_image = models.ImageField(upload_to='about')
     admission_information = RichTextField()
     admission_information_image = models.ImageField(upload_to='about')

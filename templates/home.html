@@ -1,57 +1,45 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
 <!-- Start Banner Area -->
-<section class="banner-area">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="banner-content">
-                            <span>Welcome Note</span>
-                            <h1>{{ about.welcome_note }}</h1>
-                            <div class="banner-btn pb-2">
-                                <a href="{% url 'application' %}" class="default-btn">
-                                    Apply for Admission
-                                    <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="banner-img">
-                            <img src="{{ about.welcome_note_image.url }}" width="825" height="830" alt="Image">
-                        </div>
-                    </div>
-                </div>
+<section class="banner-area" style="opacity: 1;height: 400px; background-image: url({% static 'banner.jpg' %});">
+    <div class="container">
+        <div class="text-white">
+            <span>Welcome Note</span>
+            <h1 class="mb-2" style="color:brown;">{{ about.welcome_note }}</h1>
+            <div class="banner-btn pb-2">
+                <a href="{% url 'application' %}" class="default-btn">
+                    Apply for Admission
+                    <i class="ri-arrow-right-line"></i>
+                </a>
             </div>
         </div>
     </div>
 </section>
-<!-- End Banner Area -->
 
 <!-- Stat About Area -->
 <section class="about-area ptb-100">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="about-img mr-15">
-                    <img src="{{ about.history_image.url }}" width="825" height="830" alt="Image">
+            <div class="col-xl-6">
+                <div class="about-img-two mr-15">
+                    {% if about.history_image %}
+                    <img src="{{ about.history_image.url }}" alt="Image">
+                    {% endif %}
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-xl-6">
                 <div class="about-content ml-15">
                     <span>About our School</span>
+                    <h2>{{ about.history_title }}</h2>
                     <p>{{ about.history|safe|truncatechars:420 }}</p>
-
                     <a href="{% url 'history' %}" class="default-btn">
-						Read more
-						<i class="ri-arrow-right-line"></i>
-					</a>
+                        Read more
+                        <i class="ri-arrow-right-line"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -118,12 +106,14 @@
 <!-- End Events Area -->
 
 <!-- Stat Admission Area -->
-<section class="admission-area ptb-100">
+<section class="about-area ptb-100">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="admission-img mr-15">
-                    <img src="{{ about.admission_information_image.url }}" alt="Image">
+            <div class="col-xl-6">
+                <div class="about-img-two mr-15">
+                    {% if about.admission_information_image %}
+                    <img style="width: 700px;" src="{{ about.admission_information_image.url }}" alt="Image">
+                    {% endif %}
                 </div>
             </div>
 

@@ -147,7 +147,6 @@ Banner Area Style
 
 .banner-area {
     position: relative;
-    z-index: 1;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -156,9 +155,6 @@ Banner Area Style
     overflow: hidden;
 }
 
-.banner-area.bg-1 {
-    background-image: url(https://via.placeholder.com/1920x1080.jpg);
-}
 
 .banner-area.bg-2 {
     background-image: url(https://via.placeholder.com/1920x1080.jpg);
@@ -443,7 +439,7 @@ About Area Style
 
 .about-area {
     position: relative;
-    z-index: 1;
+    1z-index: 1;
 }
 
 .about-area.about-area-style-three {
@@ -466,7 +462,7 @@ About Area Style
     display: none;
 }
 
-.about-img {
+1.about-img {
     position: relative;
     padding-top: 70px;
     padding-bottom: 70px;
@@ -491,13 +487,13 @@ About Area Style
     border-color: var(--main-color);
 }
 
-.about-img-two {
+1.about-img-two {
     position: relative;
     padding-right: 0;
     padding-bottom: 0;
 }
 
-.about-img-two::before {
+1.about-img-two::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -510,7 +506,7 @@ About Area Style
     transition: var(--transition);
 }
 
-.about-img-two .about-shape {
+1.about-img-two .about-shape {
     position: relative;
     position: absolute;
     top: 100px;
