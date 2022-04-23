@@ -9,26 +9,30 @@ class ApplicationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['full_name'].widget.attrs.update(
-            {'class': 'form-control'})
-        self.fields['pupil_class'].widget.attrs.update(
-            {'class': 'form-control'})
-        self.fields['image'].widget.attrs.update(
-            {'class': 'form-control'})
-        self.fields['parent_name'].widget.attrs.update(
-            {'class': 'form-control'})
-        self.fields['contact_number'].widget.attrs.update(
-            {'class': 'form-control'})
-        self.fields['email'].widget.attrs.update(
-            {'class': 'form-control'})
-        self.fields['home_address'].widget.attrs.update(
-            {'class': 'form-control'})
+        for field in self.visible_fields():
+            field.field.widget.attrs['class'] = 'form-control'
+        # self.fields['full_name'].widget.attrs.update(
+        #     {'class': 'form-control',
+        #      'placeholder': 'Surname, Firstname Middlename'})
+        # self.fields['pupil_class'].widget.attrs.update(
+        #     {'class': 'form-control'})
+        # self.fields['image'].widget.attrs.update(
+        #     {'class': 'form-control'})
+        # self.fields['parent_name'].widget.attrs.update(
+        #     {'class': 'form-control'})
+        # self.fields['contact_number'].widget.attrs.update(
+        #     {'class': 'form-control'})
+        # self.fields['email'].widget.attrs.update(
+        #     {'class': 'form-control'})
+        # self.fields['home_address'].widget.attrs.update(
+        #     {'class': 'form-control'})
 
     class Meta:
         model = Application
-        fields = ['full_name', 'pupil_class', 'image',
-                  'date_of_birth', 'parent_name', 'contact_number',
-                  'email', 'home_address']
+        exclude = ['created', 'updated']
+        # fields = ['full_name', 'pupil_class', 'image',
+        #           'date_of_birth', 'parent_name', 'contact_number',
+        #           'email', 'home_address']
 
 
 # class ContactForm(forms.ModelForm):

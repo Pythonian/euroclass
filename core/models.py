@@ -16,6 +16,9 @@ class Subject(models.Model):
 
 
 class Application(models.Model):
+    CRECHE_ONE = 'C1'
+    CRECHE_TWO = 'C2'
+    CRECHE_THREE = 'C3'
     NURSERY_ONE = 'N1'
     NURSERY_TWO = 'N2'
     NURSERY_THREE = 'N3'
@@ -26,6 +29,9 @@ class Application(models.Model):
     PRIMARY_FIVE = 'P5'
     PRIMARY_SIX = 'P6'
     CLASS_CHOICES = (
+        (CRECHE_ONE, 'Creche One'),
+        (CRECHE_TWO, 'Creche Two'),
+        (CRECHE_THREE, 'Creche Three'),
         (NURSERY_ONE, 'Nursery One'),
         (NURSERY_TWO, 'Nursery Two'),
         (NURSERY_THREE, 'Nursery Three'),
@@ -35,14 +41,39 @@ class Application(models.Model):
         (PRIMARY_FOUR, 'Primary Four'),
         (PRIMARY_FIVE, 'Primary Five'),
         (PRIMARY_SIX, 'Primary Six'),)
-    full_name = models.CharField(max_length=100)
+    MALE = 'M'
+    FEMALE = 'F'
+    GENDER_CHOICES = (
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),)
+    full_name = models.CharField(
+        max_length=100, help_text='format: Surname, Firstname Middlename')
     pupil_class = models.CharField(max_length=2, choices=CLASS_CHOICES)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     image = models.ImageField(upload_to='application')
     date_of_birth = models.DateField()
-    parent_name = models.CharField(max_length=100)
-    contact_number = models.CharField(max_length=13)
+    child_id_document = models.FileField(upload_to='documents')
+    father_name = models.CharField(
+        max_length=100, blank=True, null=True)
+    mother_name = models.CharField(
+        max_length=100, blank=True, null=True)
+    father_contact_number = models.CharField(
+        max_length=13, blank=True, null=True)
+    mother_contact_number = models.CharField(
+        max_length=13, blank=True, null=True)
+    father_id_document = models.FileField(
+        upload_to='documents', blank=True, null=True)
+    mother_id_document = models.FileField(
+        upload_to='documents', blank=True, null=True)
     email = models.EmailField(blank=True)
     home_address = models.CharField(max_length=50)
+    city = models.CharField(max_length=20)
+    state = models.CharField(max_length=20)
+    special_assitance = models.BooleanField(
+        blank=True,
+        help_text='Click if the child needs any special assitance')
+    areas_of_assistance = models.CharField(
+        max_length=200, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

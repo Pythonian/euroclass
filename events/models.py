@@ -1,11 +1,12 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class Event(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
     category = models.CharField(max_length=20)
-    description = models.TextField()
+    description = RichTextField()
     date = models.DateTimeField()
     location = models.CharField(max_length=100)
     image = models.ImageField(upload_to='events')

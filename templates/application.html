@@ -33,33 +33,23 @@
             <form class="resume-info" method="post" action="." enctype="multipart/form-data">
                 {% csrf_token %}
                 <h3>Pupil information</h3>
-
+                {# form.as_p #}
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label for="id_full_name">Full name (required)</label>
+                            <label for="id_full_name">Name of child (required)</label>
                             {{ form.full_name }}
                         </div>
                     </div>
-
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-3 col-md-3">
                         <div class="form-group">
-                            <label for="id_pupil_class">Class (required)</label>
-                            {{ form.pupil_class }}
-                            <i class="ri-arrow-down-s-line"></i>
+                            <label for="id_gender">Gender (required)</label>
+                            {{ form.gender }}
                         </div>
                     </div>
-
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-3 col-md-3">
                         <div class="form-group">
-                            <label for="id_image">Photo (required)</label>
-                            {{ form.image }}
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-md-6">
-                        <div class="form-group">
-                            <label for="id_date_of_birth">Date Of Birth (required)</label>
+                            <label for="id_date_of_birth">Date of Birth (required)</label>
                             <div class="input-group date">
                                 {{ form.date_of_birth }}
                                 <span class="input-group-addon"></span>
@@ -68,39 +58,95 @@
                         </div>
                     </div>
 
-                    <p>Photo Must be in Passport (PP) Size</p>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="id_image">Photo (required)</label>
+                            {{ form.image }}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="id_pupil_class">Class (required)</label>
+                            {{ form.pupil_class }}
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="id_child_id_document">Pupil Document (required)</label>
+                            {{ form.child_id_document }}
+                        </div>
+                    </div>
                 </div>
 
-                <h3>Parent's information</h3>
+                <h3>Parent/ Guardian's information</h3>
 
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
-                            <label for="id_parent_name">Parent's name (required)</label>
-                            {{ form.parent_name }}
+                            <label for="id_father_name">Father's name</label>
+                            {{ form.father_name }}
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="id_father_contact_number">Father's contact no</label>
+                            {{ form.father_contact_number }}
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="id_father_id_document">Father's ID Document</label>
+                            {{ form.father_id_document }}
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
-                            <label for="id_contact_number">Contact no (required)</label>
-                            {{ form.contact_number }}
+                            <label for="id_mother_name">Mother's name</label>
+                            {{ form.mother_name }}
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="id_mother_contact_number">Mother's contact no</label>
+                            {{ form.mother_contact_number }}
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="id_mother_id_document">Mother's ID Document</label>
+                            {{ form.mother_id_document }}
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
                             <label for="id_email">Contact E-mail</label>
                             {{ form.email }}
                         </div>
                     </div>
-
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-4 col-md-4">
                         <div class="form-group">
                             <label for="id_home_address">Home address (required)</label>
                             {{ form.home_address }}
                         </div>
                     </div>
+                    <div class="col-lg-2 col-md-2">
+                        <div class="form-group">
+                            <label for="id_city">City</label>
+                            {{ form.city }}
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <div class="form-group">
+                            <label for="id_state">State</label>
+                            {{ form.state }}
+                        </div>
+                    </div>
+
                     
                     <div class="col-lg-12">
                         <input type="submit" class="default-btn" value="Submit application">

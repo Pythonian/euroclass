@@ -16,14 +16,18 @@ def home(request):
     if events.exists():
         next_event = Event.objects.filter(date__gte=now).earliest()
     news = News.objects.all()[:3]
-    tuitions = Tuition.objects.all()[:2]
     about = About.objects.first()
     context = {
         'events': events, 'next_event': next_event,
-        'news': news, 'tuitions': tuitions,
-        'about': about,
+        'news': news, 'about': about,
     }
     return render(request, 'home.html', context)
+
+
+def tuitions(request):
+    tuitions = Tuition.objects.all()[:2]
+    context = {'tuitions': tuitions}
+    return render(request, 'tuition.html', context)
 
 
 def application(request):

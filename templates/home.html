@@ -3,22 +3,6 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<!-- Start Banner Area -->
-<!-- <section class="banner-area" style="opacity: 1;height: 400px; background-image: url({% static 'banner.jpg' %});">
-    <div class="container">
-        <div class="text-white">
-            <span>Welcome Note</span>
-            <h1 class="mb-2" style="color:brown;">{{ about.welcome_note }}</h1>
-            <div class="banner-btn pb-2">
-                <a href="{% url 'application' %}" class="default-btn">
-                    Apply for Admission
-                    <i class="ri-arrow-right-line"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</section> -->
-
 <section class="about-area ptb-100">
     <div class="container">
         <div class="row align-items-center">
@@ -156,45 +140,6 @@
     </div>
 </section>
 <!-- End Admission Area -->
-
-<!-- Start Costing Area -->
-<section class="costing-area pt-100 pb-70">
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-lg-4 col-md-6">
-                <div class="costing-content">
-                    <h2>Tuition costs</h2>
-                    <p>Our rates are affordable to ensure that nobody is left out in their quest for academic excellence.</p>
-                </div>
-            </div>
-
-            {% for tuition in tuitions %}
-            <div class="col-lg-4 col-md-6">
-                <div class="single-costing-card">
-                    <h3>{{ tuition.tuition_info }}</h3>
-                    <span class="subtitle">3-month Terms</span>
-
-                    <p>First Term <span>({{ tuition.first_term_period }})</span> <span class="price"> <br> &#8358;{{ tuition.first_term_price }}</span> </p>
-
-                    <p>Second Term <span> ({{ tuition.second_term_period }})</span> <span class="price"> <br> &#8358;{{ tuition.second_term_price }}</span> </p>
-
-                    <p>Third Term <span>({{ tuition.third_term_period }})</span> <span class="price"> <br> &#8358;{{ tuition.third_term_price }}</span> </p>
-
-                    <ul>
-                        <li>
-                            Total
-                        </li>
-                        <li class="price">
-                            &#8358;{{ tuition.term_total }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-<!-- End Costing Area -->
 
 <!-- Start Blog Area -->
 <section class="blog-area pt-100 pb-70">
