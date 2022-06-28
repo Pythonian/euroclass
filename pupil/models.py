@@ -33,6 +33,8 @@ class Pupil(models.Model):
     email = models.EmailField(blank=True)
     home_address = models.CharField(
         max_length=50, blank=True, null=True)
+    student_number = models.CharField(
+        max_length=50, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

@@ -4,6 +4,7 @@ from django.contrib.flatpages.models import FlatPage
 from django.db import models
 
 from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from .models import (
     Subject, FrequentlyAskedQuestion,
@@ -13,7 +14,7 @@ from .models import (
 
 class FlatPageCustom(FlatPageAdmin):
     formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget}
+        models.TextField: {'widget': CKEditorUploadingWidget}
     }
 
 

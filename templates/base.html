@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Euroclass Visionary Academy is an academic institution for Nursery and Primary students with the vision to inspire and illuminate them to make the world a better place.">
 
     <!-- Bootstrap Min CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -25,12 +26,12 @@
     <!-- Date Picker Min CSS -->
     <link rel="stylesheet" href="{% static 'css/date-picker.min.css' %}">
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}?v=1.1">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     <!-- Title -->
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} | Euroclass Visionary Academy</title>
 </head>
 
 <body>
@@ -65,21 +66,21 @@
                                         <i class="ri-facebook-fill"></i>
                                     </a>
                             </li>
-                            <li>
-                                <a href="{{ info.instagram_url }}" target="_blank">
-                                        <i class="ri-instagram-line"></i>
-                                    </a>
-                            </li>
-                            <li>
-                                <a href="{{ info.linkedin_url }}" target="_blank">
-                                        <i class="ri-linkedin-fill"></i>
-                                    </a>
-                            </li>
-                            <li>
-                                <a href="{{ info.twitter_url }}" target="_blank">
-                                        <i class="ri-twitter-fill"></i>
-                                    </a>
-                            </li>
+                            <!--<li>-->
+                            <!--    <a href="{{ info.instagram_url }}" target="_blank">-->
+                            <!--            <i class="ri-instagram-line"></i>-->
+                            <!--        </a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                            <!--    <a href="{{ info.linkedin_url }}" target="_blank">-->
+                            <!--            <i class="ri-linkedin-fill"></i>-->
+                            <!--        </a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                            <!--    <a href="{{ info.twitter_url }}" target="_blank">-->
+                            <!--            <i class="ri-twitter-fill"></i>-->
+                            <!--        </a>-->
+                            <!--</li>-->
                         </ul>
                     </div>
                 </div>
@@ -114,7 +115,7 @@
 
                         <ul class="import-link">
                             <li>
-                                <a href="application.html">Application Form</a>
+                                <a href="{% url 'application' %}">Application Form</a>
                             </li>
                             <li>
                                 <a href="{% url 'admission' %}">Admission Information</a>

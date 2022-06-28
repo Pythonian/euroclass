@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -157,17 +158,17 @@ CKEDITOR_BROWSE_SHOW_DIRS = True
 
 CKEDITOR_RESTRICT_BY_DATE = True
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-            ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source']
-        ]
-    }
-}
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'Custom',
+#         'toolbar_Custom': [
+#             ['Bold', 'Italic', 'Underline'],
+#             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+#             ['Link', 'Unlink'],
+#             ['RemoveFormat', 'Source']
+#         ]
+#     }
+# }
 
 JAZZMIN_SETTINGS = {
     # title of the window

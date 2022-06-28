@@ -9,7 +9,7 @@ from django.views.generic.base import RedirectView
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('webadmin/', admin.site.urls),
     path('news/', include('news.urls')),
     path('events/', include('events.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),

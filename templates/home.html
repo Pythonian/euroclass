@@ -6,10 +6,10 @@
 <section class="about-area ptb-100">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-xl-6">
+            <div class="col-xl-6 mb-3">
                 <div class="about-content ml-15">
                     <span>Welcome Note</span>
-                    <h2>{{ about.welcome_note }}</h2>
+                    <h4>{{ about.welcome_note|linebreaks }}</h4>
                     <a href="{% url 'application' %}" class="default-btn">
                         Apply for Admission
                         <i class="ri-arrow-right-line"></i>
@@ -117,11 +117,11 @@
 <section class="about-area ptb-100">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
+            <div class="col-lg-6 mb-3">
                 <div class="admission-content ml-15">
                     <span>Admission information</span>
                     <h2>All types of admission information into the school can be found here</h2>
-                    <p>{{ about.admission_information|safe|truncatechars:420 }}</p>
+                    <p>{{ about.admission_information|safe|truncatewords:63 }}</p>
 
                     <a href="{% url 'admission' %}" class="default-btn">
 						Read more
@@ -129,7 +129,7 @@
 					</a>
                 </div>
             </div>
-            <div class="col-xl-6">
+            <div class="col-lg-6">
                 <div class="about-img-two mr-15">
                     {% if about.admission_information_image %}
                     <img style="width: 700px;" src="{{ about.admission_information_image.url }}" alt="Image">
@@ -142,6 +142,7 @@
 <!-- End Admission Area -->
 
 <!-- Start Blog Area -->
+{% if news %}
 <section class="blog-area pt-100 pb-70">
     <div class="container">
         <div class="section-title">
@@ -177,6 +178,7 @@
         </div>
     </div>
 </section>
+{% endif %}
 <!-- End Blog Area -->
 
 {% endblock %}

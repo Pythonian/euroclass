@@ -10,5 +10,5 @@ class CautionInline(admin.StackedInline):
 
 @admin.register(Pupil)
 class PupilAdmin(admin.ModelAdmin):
-    list_display = ['full_name', 'pupil_class', 'date_of_registration']
+    list_display = ['full_name', 'pupil_class', 'student_number', 'date_of_registration']
     inlines = [CautionInline]

@@ -18,10 +18,10 @@
 <section class="events-area events-area-style-two ptb-100">
     <div class="container">
         <div class="row">
-            
+
             <div class="col-8">
                 <div class="events-content ml-15">
-                    
+                    {% if resolutions %}
                     <ul class="events-list">
                         {% for obj in resolutions %}
                         <li>
@@ -42,9 +42,12 @@
                         </li>
                         {% endfor %}
                     </ul>
+                    {% else %}
+                        <p>No Meeting resolution information available yet.</p>
+                    {% endif %}
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
