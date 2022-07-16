@@ -6,14 +6,22 @@ class ApplicationForm(forms.ModelForm):
     date_of_birth = forms.DateField(
         widget=forms.TextInput(
             attrs={'type': 'date', 'class': 'form-control'}))
+    dob_sibling_1 = forms.DateField(
+        widget=forms.TextInput(
+            attrs={'type': 'date', 'class': 'form-control'}))
+    dob_sibling_2 = forms.DateField(
+        widget=forms.TextInput(
+            attrs={'type': 'date', 'class': 'form-control'}))
+    dob_sibling_3 = forms.DateField(
+        widget=forms.TextInput(
+            attrs={'type': 'date', 'class': 'form-control'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.visible_fields():
             field.field.widget.attrs['class'] = 'form-control'
-        # self.fields['full_name'].widget.attrs.update(
-        #     {'class': 'form-control',
-        #      'placeholder': 'Surname, Firstname Middlename'})
+        self.fields['full_name'].widget.attrs.update(
+            {'placeholder': 'Surname, Firstname Middlename'})
         # self.fields['pupil_class'].widget.attrs.update(
         #     {'class': 'form-control'})
         # self.fields['image'].widget.attrs.update(

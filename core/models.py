@@ -46,6 +46,11 @@ class Application(models.Model):
     GENDER_CHOICES = (
         (MALE, 'Male'),
         (FEMALE, 'Female'),)
+    YES = 'Y'
+    NO = 'N'
+    YES_NO_CHOICES = (
+        (YES, 'Yes'),
+        (NO, 'No'),)
     full_name = models.CharField(
         max_length=100, help_text='format: Surname, Firstname Middlename')
     pupil_class = models.CharField(max_length=2, choices=CLASS_CHOICES)
@@ -74,6 +79,36 @@ class Application(models.Model):
         help_text='Click if the child needs any special assitance')
     areas_of_assistance = models.CharField(
         max_length=200, blank=True)
+
+    sibling_name_1 = models.CharField(
+        max_length=100, blank=True, null=True)
+    dob_sibling_1 = models.DateField(blank=True, null=True)
+    gender_sibling_1 = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
+    category_sibling_1 = models.CharField(
+        max_length=50, blank=True, null=True)
+    sibling_class_1 = models.CharField(
+        max_length=2, choices=CLASS_CHOICES, blank=True, null=True)
+
+    sibling_name_2 = models.CharField(
+        max_length=100, blank=True, null=True)
+    dob_sibling_2 = models.DateField(blank=True, null=True)
+    gender_sibling_2 = models.CharField(
+        max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
+    category_sibling_2 = models.CharField(
+        max_length=50, blank=True, null=True)
+    sibling_class_2 = models.CharField(
+        max_length=2, choices=CLASS_CHOICES, blank=True, null=True)
+
+    sibling_name_3 = models.CharField(
+        max_length=100, blank=True, null=True)
+    dob_sibling_3 = models.DateField(blank=True, null=True)
+    gender_sibling_3 = models.CharField(
+        max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
+    category_sibling_3 = models.CharField(
+        max_length=50, blank=True, null=True)
+    sibling_class_3 = models.CharField(
+        max_length=2, choices=CLASS_CHOICES, blank=True, null=True)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
